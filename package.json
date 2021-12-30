@@ -1,0 +1,13 @@
+{
+  "name": "pop-queue",
+  "dependencies": {
+    "mongodb": "^4.1.2",
+    "ioredis": "^4.11.2"
+  },
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Redis and Mongo backed light weight job queue",
+  "main": "index.js",
+  "license": "ISC",
+  "author": "Himanshu Dewangan <kshot.code@gmail.com>"
+}
