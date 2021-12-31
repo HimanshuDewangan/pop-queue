@@ -44,7 +44,6 @@ export class PopQueue {
         let names = Object.keys(this.runners);
         if (names.length) {
             this.loopRunning = true;
-            console.log("Loop initiating");
             while (true) {
                 let counter = 0;
                 for (let name of names) {
@@ -57,7 +56,6 @@ export class PopQueue {
                     }
                 }
                 if (counter == names.length) {
-                    console.log("Loop breaking");
                     this.loopRunning = false
                     break;                    
                 }
@@ -72,7 +70,6 @@ export class PopQueue {
     async connectDb() {
         try {
             this.db =  await mongoClient(this.dbUrl, this.dbName);
-            console.log('db connected');
         } catch(e) {
             console.log(e);        
         }
@@ -81,7 +78,6 @@ export class PopQueue {
     async connectRedis() {
         try {
             this.redisClient =  await redisClient(this.redis);
-            console.log('redis connected');
         } catch(e) {
             console.log(e);        
         }
@@ -92,7 +88,6 @@ export class PopQueue {
             let document = {_id: objectId().toString(), data: job, created_on: new Date(), name};
             if (!this.db) {
                 await this.connect();
-                console.log("Connected Db");
             }
             await this.db.collection(this.getDbCollectionName(name)).insertOne(document);
             await this.pushToQueue(document, name);
@@ -113,7 +108,6 @@ export class PopQueue {
         try {
             let stringDocument = await this.redisClient.rpop(`pop:queue:${name}`);
             if (!stringDocument) {
-                console.log("no document in redis");
                 return null;
             }
             let document = parseDocFromRedis(stringDocument);
