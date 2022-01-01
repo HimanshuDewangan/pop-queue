@@ -76,7 +76,7 @@ popQueue.connect().then(async (err) => {
 
 ```
 
-Finally, we need a file to push jobs to queue *scheduler.js*. This is to emulate job addition is queue.
+Now we need a file to push jobs to queue *scheduler.js*. This is to emulate job addition is queue.
 
 ```
 import { popQueue } from './queue.js';
@@ -104,4 +104,16 @@ function getJobName() {
     return "job_" + parseInt(Math.random() * 100)
 }
 
+```
+
+Finally lets create an *index.js* file. 
+
+```
+import * as runner from "./runner.js";
+import * as scheduler from "./scheduler.js";
+```
+
+Run the index file to start pop-queue
+```
+node index.js
 ```
