@@ -4,10 +4,19 @@
     "mongodb": "^4.1.2",
     "ioredis": "^4.11.2"
   },
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "description": "Redis and Mongo backed light weight job queue",
   "main": "index.js",
   "license": "ISC",
-  "author": "Himanshu Dewangan <kshot.code@gmail.com>"
+  "author": "Himanshu Dewangan <kshot.code@gmail.com>",
+  "keywords": [
+    "job",
+    "queue",
+    "task",
+    "parallel",
+    "jobs",
+    "scheduler",
+    "runner"
+  ]
 }
